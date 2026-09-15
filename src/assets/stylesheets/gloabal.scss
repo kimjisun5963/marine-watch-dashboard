@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Global Design Tokens & Variables (해양/항만 대시보드 테마)
+   ========================================================================== */
+:root {
+  // Color Palette (Dark Theme Base)
+  --bg-primary: #0f172a;       // 앱 메인 배경 (Deep Navy)
+  --bg-secondary: #1e293b;     // 사이드바 & 카드 배경 (Navy Slate)
+  --bg-tertiary: #334155;      // 호버 & 패널 배경
+  
+  // Accent & Status Colors
+  --accent-blue: #38bdf8;      // 메인 포인트 (Sky Blue)
+  --accent-cyan: #06b6d4;      // 관제 데이터 Highlight
+  --status-success: #10b981;   // 정상/입항 완료 (Green)
+  --status-warning: #f59e0b;   // 주의/대기 (Amber)
+  --status-danger: #ef4444;    // 이상 감지/경보 (Red)
+  
+  // Text Colors
+  --text-primary: #f8fafc;     // 기본 본문 텍스트
+  --text-secondary: #94a3b8;   // 비활성/서브 텍스트
+  --text-muted: #64748b;       // 캡션/비활성화 라벨
+
+  // Fonts & Spacing
+  --font-family-base: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  --font-family-code: 'JetBrains Mono', monospace; // 위치 좌표 및 센서 데이터용
+  
+  // Dimensions
+  --sidebar-width: 64px;       // 슬림 사이드바 너비
+  --header-height: 60px;       // 상단 헤더 높이
+}
+
+/* ==========================================================================
+   CSS Reset & Base Styles
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; // 대시보드 특성상 전체 스크롤 방지 (필요 시 내부 영역 스크롤)
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Typography & Interactive Elements Reset
+   ========================================================================== */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Dashboard Layout Structure
+   ========================================================================== */
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+// 전체 메인 레이아웃 래퍼
+.app-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-primary);
+  }
+
+  &__main {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto; // 중앙 메인 관제 영역만 스크롤 가능
+  }
+}
