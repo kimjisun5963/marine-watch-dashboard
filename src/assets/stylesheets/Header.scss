@@ -1,0 +1,28 @@
+.dashboard-header{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+
+    &__brand{}
+    &__logo{
+        i{}
+        span{}
+    }
+    
+    &__nav{
+        .segmented-menu{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            &__item{}
+            &__btn{}
+            &__btn--active{}
+        }
+    }
+
+    &__utils{}
+    &__time{}
+    &__icon-btn{}
+
+    .theme-toggle{}
+}
