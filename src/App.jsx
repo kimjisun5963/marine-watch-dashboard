@@ -6,7 +6,7 @@ import Header from "./components/layout/Header";
 
 function App() {
   
-  const [activeMenu, setActiveMenu] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('dashboard');
 
   const handleSelectMenu = (id) => {
     setActiveMenu(id);
@@ -16,7 +16,7 @@ function App() {
     <div className="app-layout">
       <div className="content">
         <Header/>
-        <Sidebar activeMenu={activeMenu} onSelectMenu={handleSelectMenu}/>
+        <Sidebar setActiveTab={activeTab} onSelectMenu={setActiveTab}/>
         <div className='app-layout__main'>
 
         </div>

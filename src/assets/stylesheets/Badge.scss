@@ -1,0 +1,11 @@
+.badge{
+    padding: 6px 14px;
+}
+
+.badge-new{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--status-danger);
+   border: 2px solid color-mix(in srgb, var(--status-danger) 10%, transparent);
+}
