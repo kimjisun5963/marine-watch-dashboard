@@ -92,7 +92,7 @@ export const menuItems: MenuItem[] = [
   { 
     id: 'cranes', 
     label: '크레인/장비 모니터링', 
-    iconName: 'crane-line',
+    iconName: 'tools-line',
     children: [
       { id: 'quay-crane', label: '안벽 크레인 (QC)' },
       { id: 'transfer-crane', label: '야드 크레인 (ARMGC)' }

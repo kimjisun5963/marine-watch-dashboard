@@ -1,0 +1,114 @@
+.dashboard-overview{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    // 상단 핵심 지표 요약 카드 섹션
+    .metrics-grid{
+        /*display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));*/
+        gap:16px;
+      
+        .metric-card{
+            display: flex;
+            flex-direction: column;
+    
+            box-sizing: border-box;
+            background-color: var(--bg-tertiary);
+            padding: 24px;
+            text-align: left;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            .metric-title{
+                font-size: var(--font-base);
+                color: var(--text-secondary);
+            }
+            .metric-value{
+                font-size: var(--font-xl);
+                color: var(--text-primary);
+            }
+            .metric-badge {
+                display: inline-flex;
+                align-items: center;
+                align-self: flex-start;
+                padding: 4px 10px;
+                font-size: 11px;
+                font-weight: 600;
+                border-radius: 6px; 
+                letter-spacing: -0.2px;
+
+                &.positive {
+                    background-color: rgba(16, 185, 129, 0.12);
+                    color: #059669;                           
+                }
+
+                &.warning {
+                    background-color: rgba(245, 158, 11, 0.12);
+                    color: #D97706;                            
+                }
+            }
+        }
+    }
+
+    // 하단 상세 정보 및 실시간 현황 영역
+    .content-grid{
+        
+        .content-card{
+            background-color: var(--bg-tertiary);
+            padding: 24px;
+            text-align: left;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+
+            h3{
+                font-size: var(--font-base);
+                color: var(--text-primary);
+                font-weight: var(--weight-semibold);
+                margin-bottom: 10px;
+            }
+
+            .table-wrapper{
+                .data-table{
+                    width: 100%;
+                    text-align: left;
+                    font-size: var(--font-sm);
+                }
+                .data-table thead{
+                    border-bottom: 1px solid var(--border-color);
+                }
+                .data-table thead tr{
+                    
+                }
+                .data-table thead tr th{
+                    padding: 6px 0px;
+                    border-bottom: 1px solid var(--border-color);
+                }
+
+                .data-table tbody{}
+                .data-table tbody tr{}
+                .data-table tbody tr td{
+                    padding: 6px 0px;
+                    border-bottom: 1px solid color-mix(in srgb, var(--border-color) 50%, transparent);
+                }
+            }
+        }
+
+        .status-badge{
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: var(--font-xs);
+        }
+        .status-badge.docked{
+            border: 1px solid var(--status-danger);
+            color: var(--status-danger);
+        }
+        .status-badge.inbound{
+            border: 1px solid var(--status-warning);
+            color: var(--status-warning);
+        }
+        .status-badge.outbound{
+            border: 1px solid var(--status-success);
+            color: var(--status-success);
+        }
+    }
+}

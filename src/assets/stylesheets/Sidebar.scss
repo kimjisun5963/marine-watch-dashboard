@@ -1,37 +1,172 @@
 .dashboard-sidebar-wrapper{
     padding: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 120px;
 }
 .dashboard-sidebar{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
     &__nav{
         width: 90px;
         padding: 10px;
         box-sizing: border-box;
         background-color: var(--bg-secondary);
         border-radius: 999px;
+        box-shadow: var(--shadow-sm);
+        
     
     }
-    &__list{}
-    &__item{}
+    &__list{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    &__item{
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
     &__link{
         width: 70px;
         height: 70px;
         border-radius: 50%;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: var(--bg-tertiary);
+        }
+
         .dashboard-sidebar__icon{
-            color:#333333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary, #727272);
+            transition: color 0.2s ease;
             i{
-                font-size: var(--font-2xl);
+                font-size: var(--font-2xl, 28px);
             }
+        }
+
+        .dashboard-sidebar__label {
+            display: none !important; 
         }
     }
     &__link--active{
         background-color: var(--accent-main);
+        box-shadow: 0 4px 12px rgba(16, 134, 82, 0.3);
         
         .dashboard-sidebar__icon{
             color:#ffffff;
         }
+        &:hover {
+            background-color: var(--accent-sub);
+        }
     }
  
-    &__label{
-        display: none;
+  /* Hover 시 우측에 나타나는 서브메뉴 Floating Layer (팝오버) */
+    &__sub-popover {
+        position: absolute;
+        top: 0;
+        left: calc(100% + 12px); // 사이드바 바로 오른쪽에 띄우기
+        min-width: 180px;
+        background-color: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: var(--shadow-sm, 0 4px 12px rgba(0, 0, 0, 0.15));
+        padding: 8px;
+        z-index: 100;
+        animation: fadeIn 0.2s ease;
+
+        .dashboard-sidebar__sub-header {
+            padding: 8px 12px;
+            text-align: left;
+            font-size: var(--font-xs, 12px);
+            font-weight: var(--weight-bold, 700);
+            color: var(--text-muted, #9e9e9e);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4px;
+        }
+
+        .dashboard-sidebar__sub-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dashboard-sidebar__sub-link {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: var(--font-sm, 14px);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+
+            &:hover {
+                background-color: var(--bg-tertiary);
+                color: var(--accent-main);
+            }
+        }
+    }
+
+    /* 하단 로그아웃 버튼 영역 */
+    &__bottom {
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+    }
+
+    &__logout-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-secondary);
+        color: var(--status-danger, #ef4444);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: var(--shadow-sm);
+        transition: background-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+            background-color: var(--bg-tertiary);
+            transform: scale(1.05);
+        }
+    }
+}
+
+/* 간단한 페이드인 애니메이션 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
