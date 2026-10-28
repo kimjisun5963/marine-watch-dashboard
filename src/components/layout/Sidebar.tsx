@@ -40,9 +40,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     type="button"
                     aria-label={item.label}
                     aria-expanded={hasChildren ? isHovered : undefined}
-                    className={`dashboard-sidebar__link ${
-                      isActive ? 'dashboard-sidebar__link--active' : ''
-                    }`}
+                    className={`dashboard-sidebar__link ${isActive ? 'dashboard-sidebar__link--active' : ''
+                      }`}
                     onClick={() => onSelectMenu?.(item.id)}
                   >
                     <span className="dashboard-sidebar__icon">
@@ -54,26 +53,28 @@ const Sidebar: React.FC<SidebarProps> = ({
                   {/* Hover 시 우측에 나타나는 서브메뉴 Floating Layer */}
                   {hasChildren && isHovered && (
                     <div className="dashboard-sidebar__sub-popover" role="menu">
-                      <div className="dashboard-sidebar__sub-header">
-                        {item.label}
+                      <div className="dashboard-sidebar__sub-content">
+                        <div className="dashboard-sidebar__sub-header">
+                          {item.label}
+                        </div>
+                        <ul className="dashboard-sidebar__sub-list">
+                          {item.children!.map((sub) => (
+                            <li key={sub.id} className="dashboard-sidebar__sub-item" role="none">
+                              <button
+                                type="button"
+                                className="dashboard-sidebar__sub-link"
+                                role="menuitem"
+                                onClick={() => {
+                                  onSelectMenu?.(sub.id);
+                                  setHoveredMenuId(null);
+                                }}
+                              >
+                                {sub.label}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <ul className="dashboard-sidebar__sub-list">
-                        {item.children!.map((sub) => (
-                          <li key={sub.id} className="dashboard-sidebar__sub-item" role="none">
-                            <button
-                              type="button"
-                              className="dashboard-sidebar__sub-link"
-                              role="menuitem"
-                              onClick={() => {
-                                onSelectMenu?.(sub.id);
-                                setHoveredMenuId(null);
-                              }}
-                            >
-                              {sub.label}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
                     </div>
                   )}
                 </li>
