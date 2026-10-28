@@ -8,7 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
-import { mockPortMetrics } from '@assets/mocks/portData'; 
+import { mockPortMetrics } from '@assets/mocks/portData';
 import "@assets/stylesheets/DashboardOverview.scss";
 
 // 차트 예시 데이터 (시간대별 하역 물동량 추이)
@@ -66,8 +66,8 @@ const DashboardOverview: React.FC = () => {
               <AreaChart data={throughputData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorVolume" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#108652" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#108652" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="color-mix(in srgb, var(--border-color) 40%, transparent)" />
@@ -81,7 +81,7 @@ const DashboardOverview: React.FC = () => {
                     color: 'var(--text-primary)',
                   }}
                 />
-                <Area type="monotone" dataKey="volume" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#colorVolume)" />
+                <Area type="monotone" dataKey="volume" stroke="#108652" strokeWidth={2} fillOpacity={1} fill="url(#colorVolume)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -93,18 +93,38 @@ const DashboardOverview: React.FC = () => {
             <h3>부산항 기상 및 안전 현황</h3>
           </div>
           <div className="weather-widget">
+
             <div className="info-row">
-              <span>풍속 / 풍향</span>
-              <strong>7.2 m/s (북동풍)</strong>
+              <span className='info-icon'>
+                <i className="ri-windy-line"></i>
+              </span>
+              <div className="label-group">
+                <span>풍속 / 풍향</span>
+                <strong>7.2 m/s (북동풍)</strong>
+              </div>
+
             </div>
+
             <div className="info-row">
-              <span>파고 (내항/외항)</span>
-              <strong>0.8m / 1.5m</strong>
+              <span className='info-icon'>
+                  <i className="ri-water-flash-line"></i>
+                </span>
+              <div className="label-group">
+                <span>파고 (내항/외항)</span>
+                <strong>0.8m / 1.5m</strong>
+              </div>
             </div>
+
             <div className="info-row">
-              <span>시정거리</span>
-              <strong>10 km (양호)</strong>
+              <span className='info-icon'>
+                  <i className="ri-foggy-line"></i>
+                </span>
+              <div className="label-group">
+                <span>시정거리</span>
+                <strong>10 km (양호)</strong>
+              </div>
             </div>
+
             <div className="alert-box normal">
               <span className="status-dot"></span>
               현재 도선 및 하역 작업 정상 진행 중
