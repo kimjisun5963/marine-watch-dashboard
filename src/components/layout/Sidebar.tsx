@@ -24,9 +24,13 @@ const Sidebar: React.FC<SidebarProps> = ({
         <nav className="dashboard-sidebar__nav" aria-label="사이드바 메뉴">
           <ul className="dashboard-sidebar__list">
             {menuItems.map((item) => {
-              const isActive = activeMenu === item.id;
-              const isHovered = hoveredMenuId === item.id;
               const hasChildren = item.children && item.children.length > 0;
+
+              const isChildActive = hasChildren && item.children!.some(child => child.id === activeMenu);
+              const isActive = item.id === activeMenu || isChildActive;
+
+              const isHovered = hoveredMenuId === item.id;
+
 
               return (
                 <li
@@ -58,21 +62,26 @@ const Sidebar: React.FC<SidebarProps> = ({
                           {item.label}
                         </div>
                         <ul className="dashboard-sidebar__sub-list">
-                          {item.children!.map((sub) => (
-                            <li key={sub.id} className="dashboard-sidebar__sub-item" role="none">
-                              <button
-                                type="button"
-                                className="dashboard-sidebar__sub-link"
-                                role="menuitem"
-                                onClick={() => {
-                                  onSelectMenu?.(sub.id);
-                                  setHoveredMenuId(null);
-                                }}
-                              >
-                                {sub.label}
-                              </button>
-                            </li>
-                          ))}
+                          {item.children!.map((sub) => {
+                            const isSubActive = activeMenu === sub.id;
+
+                            return (
+                              <li key={sub.id} className="dashboard-sidebar__sub-item" role="none">
+                                <button
+                                  type="button"
+                                  className={`dashboard-sidebar__sub-link ${isSubActive ? 'dashboard-sidebar__sub-link--active' : ''}`}
+                                  role="menuitem"
+                                  onClick={() => {
+                                    onSelectMenu?.(sub.id);
+                                    setHoveredMenuId(null);
+                                  }}
+                                >
+                                  {sub.label}
+                                </button>
+                              </li>
+                            )
+
+                          })}
                         </ul>
                       </div>
                     </div>

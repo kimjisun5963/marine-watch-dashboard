@@ -5,12 +5,14 @@ import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
 
 // 페이지 컴포넌트
-import DashboardOverview from './pages/DashboardOverview';
-import VesselTracking from './pages/VesselTracking';
-import BerthManagement from './pages/BerthManagement';
-import CraneMonitoring from './pages/CraneMonitoring';
-import AlertCenter from './pages/AlertCenter';
-import SystemSettings from './pages/SystemSettings';
+import DashboardOverview from './pages/dashboard/DashboardOverview';
+import DashboardKpi from './pages/dashboard/DashboardKpi';
+import VesselTracking from './pages/vessels/VesselTracking'; 
+import BerthStatus from './pages/berths/BerthStatus';
+import BerthSchedule from './pages/berths/BerthSchedule'; 
+import CraneMonitoring from './pages/cranes/CraneMonitoring';
+import AlertCenter from './pages/alerts/AlertCenter';
+import SystemSettings from './pages/settings/SystemSettings';
 
 
 function App() {
@@ -21,8 +23,9 @@ function App() {
     switch (activeTab) {
         case 'dashboard':
         case 'overview':
-        case 'kpi':
           return <DashboardOverview/>;
+        case 'kpi':
+          return <DashboardKpi/>;
 
         case 'vessels':
         case 'inbound':
@@ -32,8 +35,9 @@ function App() {
 
         case 'berths':
         case 'berth-status':
+          return <BerthStatus />;
         case 'schedule':
-          return <BerthManagement />;
+          return <BerthSchedule />;
         
         case 'cranes':
         case 'quay-crane':
